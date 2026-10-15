@@ -1,274 +1,133 @@
-\# Machine Failure Prediction Using Machine Learning
+# Machine Failure Prediction Using Machine Learning
 
-
-
-\## Project Overview
-
-
+## Project Overview
 
 This project predicts potential machine failures using machine learning and sensor data. It uses machine operating parameters to estimate whether a machine is likely to experience a failure.
 
-
-
 The project combines a machine learning model with a web interface to make predictions from user-provided inputs.
 
+## Objectives
 
+* Predict machine failures using sensor measurements.
+* Explore machine operating conditions using data analysis.
+* Build a web application for interactive predictions.
+* Make the trained machine learning model accessible through an API.
 
-\## Objectives
+## Technologies Used
 
+* **Programming Language:** Python
+* **Machine Learning:** Scikit-learn
+* **Data Processing:** Pandas, NumPy
+* **Web Framework:** FastAPI
+* **Frontend:** HTML
+* **API Documentation:** Swagger UI
+* **Model Storage:** Joblib
 
+## Dataset
 
-\* Predict machine failures using sensor measurements.
-
-\* Explore machine operating conditions using data analysis.
-
-\* Build a web application for interactive predictions.
-
-\* Make the trained machine learning model accessible through an API.
-
-
-
-\## Technologies Used
-
-
-
-\* \*\*Programming Language:\*\* Python
-
-\* \*\*Machine Learning:\*\* Scikit-learn
-
-\* \*\*Data Processing:\*\* Pandas, NumPy
-
-\* \*\*Web Framework:\*\* FastAPI
-
-\* \*\*Frontend:\*\* HTML
-
-\* \*\*API Documentation:\*\* Swagger UI
-
-\* \*\*Model Storage:\*\* Joblib
-
-
-
-\## Dataset
-
-
-
-This project uses the AI4I 2020 Predictive Maintenance Dataset from the UCI Machine Learning Repository.
-
-
+This project uses the **AI4I 2020 Predictive Maintenance Dataset** from the UCI Machine Learning Repository.
 
 The dataset contains 10,000 records with machine operating parameters and machine failure information.
 
+**Dataset Link:** [AI4I 2020 Predictive Maintenance Dataset — UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset)
 
+### Features Used
 
-Dataset Link:
+* Machine Type
+* Air Temperature (K)
+* Process Temperature (K)
+* Rotational Speed (rpm)
+* Torque (Nm)
+* Tool Wear (min)
 
-AI4I 2020 Predictive Maintenance Dataset — UCI Machine Learning Repository
+### Target Variable
 
+**Machine failure:** Indicates whether a machine failure occurred.
 
-
-The dataset contains machine operating measurements, including:
-
-
-
-\* Air temperature
-
-\* Process temperature
-
-\* Rotational speed
-
-\* Torque
-
-\* Tool wear
-
-\* Machine type
-
-
-
-\*\*Target variable:\*\* `Machine failure`
-
-
-
-The target indicates whether a machine failure occurred.
-
-
-
-\## Project Structure
-
-
+## Project Structure
 
 ```text
-
-machine-failure-prediction/
-
-│
-
+machine_failure_detection/
 ├── main.py
-
 ├── failure.joblib
-
 ├── requirements.txt
-
 ├── README.md
-
 ├── .gitignore
-
-│
-
 └── templates/
-
-&#x20;   └── index.html
-
+    └── index.html
 ```
 
+## Installation and Setup
 
-
-\## Installation and Setup
-
-
-
-\### 1. Clone the repository
-
-
+### 1. Clone the Repository
 
 ```bash
-
-git clone YOUR\_GITHUB\_REPOSITORY\_URL
-
+git clone https://github.com/Jyothikp24/machine_failure_detection.git
 ```
 
-
-
-Replace `YOUR\_GITHUB\_REPOSITORY\_URL` with your repository's actual URL.
-
-
-
-\### 2. Navigate to the project directory
-
-
+### 2. Navigate to the Project Directory
 
 ```bash
-
-cd machine-failure-prediction
-
+cd machine_failure_detection
 ```
 
-
-
-\### 3. Create a virtual environment
-
-
+### 3. Create a Virtual Environment
 
 ```bash
-
 python -m venv venv
-
 ```
 
-
-
-\### 4. Activate the virtual environment
-
-
+### 4. Activate the Virtual Environment
 
 On Windows:
 
-
-
 ```bash
-
-venv\\Scripts\\activate
-
+venv\Scripts\activate
 ```
 
-
-
-\### 5. Install the dependencies
-
-
+### 5. Install Dependencies
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
-
-
-\### 6. Run the application
-
-
+### 6. Run the Application
 
 ```bash
-
 uvicorn main:app --reload
-
 ```
 
+### 7. Open the Application
 
+Open the following address in your browser:
 
-\### 7. Open the application
-
-
-
-Open the local address displayed in your terminal.
-
-
+http://127.0.0.1:8000
 
 To access the interactive API documentation, visit:
 
-
-
-```text
-
 http://127.0.0.1:8000/docs
 
-```
+## Machine Learning Workflow
 
+1. Load and inspect the dataset.
+2. Select relevant machine operating features.
+3. Encode categorical variables.
+4. Split the dataset into training and testing sets.
+5. Train a machine learning classification model.
+6. Evaluate the model's performance.
+7. Save the trained model using Joblib.
+8. Integrate the model with FastAPI.
+9. Provide predictions through a web interface.
 
+## Future Improvements
 
-\## Machine Learning Workflow
+* Compare different classification algorithms.
+* Evaluate model performance using precision, recall, F1-score, and a confusion matrix.
+* Improve the user interface.
+* Deploy the application online.
 
-
-
-1\. Load and inspect the dataset.
-
-2\. Select relevant machine operating features.
-
-3\. Encode categorical variables.
-
-4\. Split the dataset into training and testing sets.
-
-5\. Train a Logistic Regression model.
-
-6\. Evaluate the model's performance.
-
-7\. Save the trained model.
-
-8\. Integrate the model with FastAPI.
-
-9\. Provide predictions through a web interface.
-
-
-
-\## Future Improvements
-
-
-
-\* Compare Logistic Regression with Random Forest and other classification algorithms.
-
-\* Improve failure detection using precision, recall, and F1-score.
-
-\* Enhance the user interface.
-
-\* Deploy the application online.
-
-
-
-\## Disclaimer
-
-
+## Disclaimer
 
 This is an educational machine learning project using a predictive maintenance dataset. Its predictions should not be treated as a substitute for professional industrial safety systems.
-
 
 
