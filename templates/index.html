@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine Failure Prediction</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css">
+</head>
+<body>
+<main>
+
+  <h1>🏭 Machine Failure Prediction</h1>
+  <p>Enter the machine's sensor readings to check if a failure is likely.</p>
+
+  <form action="/predict" method="post">
+
+    <label>Product quality type
+  <select name="type" required>
+    <option value="L" {% if inputs and inputs.type == 'L' %}selected{% endif %}>L (Low)</option>
+    <option value="M" {% if inputs and inputs.type == 'M' %}selected{% endif %}>M (Medium)</option>
+    <option value="H" {% if inputs and inputs.type == 'H' %}selected{% endif %}>H (High)</option>
+  </select>
+</label>
+
+<label>Air temperature [K]
+  <input type="number" step="any" name="air_temperature" value="{{ inputs.air_temperature if inputs else 298.1 }}" required>
+</label>
+
+<label>Process temperature [K]
+  <input type="number" step="any" name="process_temperature" value="{{ inputs.process_temperature if inputs else 308.6 }}" required>
+</label>
+
+<label>Rotational speed [rpm]
+  <input type="number" name="rotational_speed" value="{{ inputs.rotational_speed if inputs else 1551 }}" required>
+</label>
+
+<label>Torque [Nm]
+  <input type="number" step="any" name="torque" value="{{ inputs.torque if inputs else 42.8 }}" required>
+</label>
+
+<label>Tool wear [min]
+  <input type="number" name="tool_wear" value="{{ inputs.tool_wear if inputs else 0 }}" required>
+</label>
+
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if result %}
+    <hr>
+    <article>
+      <h3>{{ result }}</h3>
+    </article>
+  {% endif %}
+
+</main>
+</body>
+</html>
